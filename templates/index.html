@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SVM Digit Recognition</title>
+    <!-- <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Main container */
+        .container {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 30px;
+            border-radius: 16px;
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            backdrop-filter: blur(6px);
+        }
+
+        /* Title */
+        h1 {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+
+        /* Subtitle */
+        .lead {
+            font-size: 0.95rem;
+            color: #ddd;
+            margin-bottom: 20px;
+        }
+
+        /* Upload section */
+        .upload-row {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        /* File input styling */
+        .file-input {
+            position: relative;
+            display: inline-block;
+        }
+
+        .file-input input[type="file"] {
+            display: none;
+        }
+
+        .file-input .btn {
+            background: #ffb347;
+            background: linear-gradient(45deg, #ffcc33, #ff9966);
+            color: #333;
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .file-input .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0px 4px 12px rgba(255, 204, 51, 0.4);
+        }
+
+        /* Predict button */
+        .predict-btn {
+            background: #6ee7b7;
+            background: linear-gradient(45deg, #6ee7b7, #3b82f6);
+            color: #fff;
+            padding: 10px 18px;
+            border-radius: 10px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .predict-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0px 4px 12px rgba(110, 231, 183, 0.4);
+        }
+
+        /* Preview box */
+        .preview {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Result display */
+        #result {
+            margin-top: 18px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.15)
+        }
+    </style> -->
+</head>
+<body>
+    <h1>Upload a Handwritten Digit</h1>
+    <input type="file" id="fileInput">
+    <button onclick="uploadImage()">Predict</button>
+    <p id="result"></p>
+
+    <script>
+        function uploadImage() {
+            let file = document.getElementById("fileInput").files[0];
+            let formData = new FormData();
+            formData.append("file", file);
+
+            fetch("/predict", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("result").innerText = "Prediction: " + data.prediction;
+            });
+        }
+    </script>
+</body>
+</html>
